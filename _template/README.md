@@ -47,15 +47,11 @@ $ comando_eseguito
 output_rilevante
 ```
 
+![Descrizione screenshot](./screenshots/nome_file.png)
+
 ### Step N – Password trovata
 
 La password per accedere al livello successivo è stata trovata in `percorso/del/file`.
-
----
-
-## Screenshot
-
-![Descrizione screenshot](./screenshots/nome_file.png)
 
 ---
 

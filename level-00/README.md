@@ -63,6 +63,8 @@ bandit0@bandit:~$ cat readme
 
 Il file contiene la password per accedere al livello successivo (`bandit1`).
 
+[Terminale: ls e cat readme con password trovata](./screenshots/01-password-trovata.png)
+
 ---
 
 ## Note e osservazioni
@@ -81,7 +83,3 @@ L'autenticazione può avvenire in due modi principali:
 La porta standard di SSH è la `22`; OverTheWire usa la `2220` per convenzione propria, da specificare con il flag `-p`.
 
 ---
-
-## Screenshot
-
-![Terminale: ls e cat readme con password trovata](./screenshots/01-password-trovata.png)
