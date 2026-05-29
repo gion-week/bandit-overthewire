@@ -63,7 +63,7 @@ bandit0@bandit:~$ cat readme
 
 Il file contiene la password per accedere al livello successivo (`bandit1`).
 
-![Terminale: ls e cat readme con password trovata](./screenshots/01-password-trovata.png)
+![Terminale: ls e cat readme con password trovata](./screenshots/00-password-trovata.png)
 
 ---
 
