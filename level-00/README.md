@@ -2,7 +2,7 @@
 
 ## Obiettivo
 
-> *Il fine di questo livello è effettuare l'accesso al gioco utilizzando SSH. L'host a cui devi connetterti è bandit.labs.overthewire.org, sulla porta 2220. Il nome utente è bandit0 e la password è bandit0. Una volta effettuato l'accesso, vai alla pagina del Livello 1 per scoprire come superare il Livello 1.*
+> *(da completare con la descrizione del goal del livello)*
 
 ---
 
@@ -44,6 +44,25 @@ ssh bandit0@bandit.labs.overthewire.org -p 2220
 
 Al prompt della password si inserisce `bandit0`. Una volta autenticati, si accede alla shell remota del server come utente `bandit0`.
 
+### Step 2 – Individuare i file presenti
+
+Una volta connessi, si lista il contenuto della home directory:
+
+```bash
+bandit0@bandit:~$ ls
+readme
+```
+
+È presente un unico file chiamato `readme`.
+
+### Step 3 – Leggere il file e ottenere la password
+
+```bash
+bandit0@bandit:~$ cat readme
+```
+
+Il file contiene la password per accedere al livello successivo (`bandit1`).
+
 ---
 
 ## Note e osservazioni
@@ -60,3 +79,9 @@ L'autenticazione può avvenire in due modi principali:
 - **Chiave pubblica/privata** — il client dimostra di possedere la chiave privata corrispondente a una chiave pubblica già registrata sul server (metodo più sicuro e consigliato in produzione)
 
 La porta standard di SSH è la `22`; OverTheWire usa la `2220` per convenzione propria, da specificare con il flag `-p`.
+
+---
+
+## Screenshot
+
+![Terminale: ls e cat readme con password trovata](./screenshots/01-password-trovata.png)
