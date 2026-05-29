@@ -27,9 +27,9 @@ Ogni cartella `level-XX` rappresenta la risoluzione del livello XX, ovvero i pas
 
 | Livello | Argomento principale | Completato |
 |---------|----------------------|:----------:|
-| [Level 0](./level-00/level-00-README.md) | Connessione SSH, lettura file | ✅ |
-| [Level 1](./level-01/level-01-README.md) | File con nome `-`, percorso relativo vs stdin | ✅ |
-| Level 2 | — | ⬜ |
+| [Level 0](./level-00/README.md) | Connessione SSH, lettura file | ✅ |
+| [Level 1](./level-01/README.md) | File con nome `-`, percorso relativo vs stdin | ✅ |
+| [Level 2](./level-02/README.md) | File con spazi nel nome, quoting e percorso relativo | ✅ |
 | Level 3 | — | ⬜ |
 | Level 4 | — | ⬜ |
 | Level 5 | — | ⬜ |
