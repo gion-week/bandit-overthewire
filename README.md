@@ -34,10 +34,10 @@ Ogni cartella `level-XX` rappresenta la risoluzione del livello XX, ovvero i pas
 | [Level 4](./level-04/README.md) | Tipi di file, comando `file`, wildcard `*` | ✅ |
 | [Level 5](./level-05/README.md) | Comando `find`, ricerca per dimensione | ✅ |
 | [Level 6](./level-06/README.md) | Ricerca su tutto il filesystem, criteri `find` combinati, stderr | ✅ |
-| Level 7 | — | ⬜ |
-| Level 8 | — | ⬜ |
-| Level 9 | — | ⬜ |
-| Level 10 | — | ⬜ |
+| [Level 7](./level-07/README.md) | `grep`, pipe `|`, ricerca in file di grandi dimensioni | ✅ |
+| [Level 8](./level-08/README.md) | `sort`, `uniq -u`, righe uniche in un file | ✅ |
+| [Level 9](./level-09/README.md) | `strings`, file binari, pipeline `grep` + `awk` | ✅ |
+| [Level 10](./level-10/README.md) | Encoding Base64, decodifica con `base64 -d` | ✅ |
 | Level 11 | — | ⬜ |
 | Level 12 | — | ⬜ |
 | Level 13 | — | ⬜ |
