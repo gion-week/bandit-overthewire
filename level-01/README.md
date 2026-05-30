@@ -37,17 +37,17 @@ bandit1@bandit:~$ ls
 -
 ```
 
-È presente un unico file il cui nome è `-`.
+È presente un unico file il cui nome è `-`. Già a questo punto è ragionevole aspettarsi un problema: `-` è un carattere con significato speciale per molti comandi Unix, quindi un semplice `cat -` quasi certamente non funzionerà come ci si aspetta.
 
 ### Step 2 – Leggere il file e ottenere la password
 
-Un semplice `cat -` non funziona: la shell interpreta `-` come un riferimento allo standard input (tastiera) invece che come nome di file. Per forzare `cat` a trattarlo come un file è necessario specificarne il percorso:
+Il tentativo diretto con `cat -` non restituisce alcun output e mette il terminale in attesa di input: la shell sta interpretando `-` come alias per lo standard input (tastiera) invece che come nome di file. Per aggirare questo comportamento è sufficiente fornire un percorso esplicito anziché il nome nudo, togliendo così ambiguità all'interprete:
 
 ```bash
 bandit1@bandit:~$ cat ./-
 ```
 
-Il file contiene la password per accedere al livello successivo (`bandit2`).
+Il prefisso `./` forza `cat` a trattare l'argomento come un percorso relativo a un file concreto, restituendo la password per accedere al livello successivo (`bandit2`).
 
 ![Terminale: ls e cat ./- con password trovata](./screenshots/01-password-trovata.png)
 

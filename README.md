@@ -31,8 +31,8 @@ Ogni cartella `level-XX` rappresenta la risoluzione del livello XX, ovvero i pas
 | [Level 1](./level-01/README.md) | File con nome `-`, percorso relativo vs stdin | ✅ |
 | [Level 2](./level-02/README.md) | File con spazi nel nome, quoting e percorso relativo | ✅ |
 | [Level 3](./level-03/README.md) | File nascosti, navigazione tra cartelle | ✅ |
-| Level 4 | — | ⬜ |
-| Level 5 | — | ⬜ |
+| [Level 4](./level-04/README.md) | Tipi di file, comando `file`, wildcard `*` | ✅ |
+| [Level 5](./level-05/README.md) | Comando `find`, ricerca per dimensione | ✅ |
 | Level 6 | — | ⬜ |
 | Level 7 | — | ⬜ |
 | Level 8 | — | ⬜ |

@@ -38,11 +38,11 @@ bandit2@bandit:~$ ls
 --spaces in this filename--
 ```
 
-È presente un unico file il cui nome contiene spazi.
+È presente un unico file il cui nome contiene spazi e inizia con `--`. Entrambe le caratteristiche creano problemi distinti alla shell: gli spazi frammentano il nome in token separati, mentre `--` viene tipicamente interpretato come marcatore di fine flag. Serve quindi una strategia che neutralizzi entrambe le ambiguità contemporaneamente.
 
 ### Step 2 – Leggere il file e ottenere la password
 
-Un semplice `cat --spaces in this filename--` non funziona: la shell spezzerebbe il nome in token separati, interpretando ogni parola come argomento distinto. La soluzione è racchiudere il nome tra virgolette e anteporre il prefisso di percorso `./`:
+Un semplice `cat --spaces in this filename--` non funziona: la shell spezzerebbe il nome in argomenti distinti (`--spaces`, `in`, `this`, `filename--`) causando un errore. La soluzione è combinare le virgolette doppie, che preservano gli spazi, con il prefisso `./`, che disambigua il `--` iniziale trattandolo come parte di un percorso:
 
 ```bash
 bandit2@bandit:~$ cat ./"--spaces in this filename--"

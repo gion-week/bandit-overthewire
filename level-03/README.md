@@ -38,16 +38,18 @@ bandit3@bandit:~$ ls
 inhere
 ```
 
-È presente una sola cartella chiamata `inhere`.
+È presente una sola cartella chiamata `inhere`. L'obiettivo dice esplicitamente che il file è nascosto, quindi è già chiaro che `ls` da solo non sarà sufficiente — servirà il flag `-a`.
 
 ### Step 2 – Cercare file nascosti nella home
+
+Prima di entrare in `inhere`, vale la pena controllare se ci sono file nascosti anche nella home:
 
 ```bash
 bandit3@bandit:~$ ls -a
 .  ..  .bash_logout  .bashrc  inhere  .profile
 ```
 
-Il flag `-a` mostra anche i file nascosti, ma nella home non ce ne sono di rilevanti oltre alla cartella `inhere`.
+I file che compaiono (`.bash_logout`, `.bashrc`, `.profile`) sono file di configurazione standard della shell, non rilevanti per la sfida. L'unico elemento di interesse rimane la cartella `inhere`.
 
 ### Step 3 – Navigare nella cartella e cercare il file
 
@@ -58,9 +60,11 @@ bandit3@bandit:~/inhere$ ls -a
 .  ..  ...Hiding-From-You
 ```
 
-Un semplice `ls` non restituisce nulla. Con `ls -a` emerge il file nascosto `...Hiding-From-You`.
+`ls` senza flag non restituisce nulla, confermando che il file è nascosto. Con `-a` emerge `...Hiding-From-You`: un nome volutamente evocativo che inizia con tre punti, sufficiente a renderlo invisibile al listing standard.
 
 ### Step 4 – Leggere il file e ottenere la password
+
+Non ci sono ulteriori ostacoli: il file non ha caratteri problematici nel nome oltre ai punti iniziali, quindi si può aprire direttamente:
 
 ```bash
 bandit3@bandit:~/inhere$ cat ...Hiding-From-You
@@ -80,7 +84,7 @@ Nei sistemi Linux un file o una cartella è considerato nascosto se il suo nome 
 
 Le voci `.` e `..` che compaiono sempre con `ls -a` non sono file reali: rappresentano rispettivamente la directory corrente e la directory padre, e sono presenti in ogni cartella del filesystem.
 
-Il file di questo livello si chiama `...Hiding-From-You`: inizia con tre punti, quindi viene nascosto come qualsiasi altro file dotfile, ma non ha nulla di speciale rispetto a un file che inizia con un solo punto.
+Il file di questo livello si chiama `...Hiding-From-You`: inizia con tre punti, quindi viene nascosto come qualsiasi altro dotfile, ma non ha nulla di speciale rispetto a un file che inizia con un solo punto.
 
 **Navigazione tra cartelle con `cd`**
 

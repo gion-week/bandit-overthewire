@@ -2,7 +2,8 @@
 
 ## Obiettivo
 
-> *Il fine di questo livello è effettuare l'accesso al gioco utilizzando SSH. L'host a cui devi connetterti è bandit.labs.overthewire.org, sulla porta 2220. Il nome utente è bandit0 e la password è bandit0. Una volta effettuato l'accesso, vai alla pagina del Livello 1 per scoprire come superare il Livello 1.
+Il punto di ingresso del wargame: connettersi al server tramite SSH usando le credenziali fornite direttamente dalla pagina del livello, poi trovare la password per il livello successivo.
+
 ---
 
 ## Informazioni di connessione
@@ -30,12 +31,9 @@ ssh bandit0@bandit.labs.overthewire.org -p 2220
 
 ## Soluzione
 
-Il sito di OverTheWire fornisce direttamente le credenziali per il Level 0:
+### Step 1 – Connettersi al server via SSH
 
-- **Utente:** `bandit0`
-- **Password:** `bandit0`
-
-Per connettersi, è sufficiente eseguire il comando SSH specificando utente, host e porta:
+Il sito di OverTheWire fornisce direttamente le credenziali per il Level 0, rendendo questo primo step puramente introduttivo alla meccanica del gioco. Si esegue il comando SSH specificando utente, host e porta — tre parametri che torneranno invariati per tutti i livelli successivi, cambiando solo il numero utente:
 
 ```bash
 ssh bandit0@bandit.labs.overthewire.org -p 2220
@@ -45,24 +43,26 @@ Al prompt della password si inserisce `bandit0`. Una volta autenticati, si acced
 
 ### Step 2 – Individuare i file presenti
 
-Una volta connessi, si lista il contenuto della home directory:
+Il primo passo in qualsiasi livello è orientarsi nella home directory. Si lista il contenuto per capire con cosa si ha a che fare:
 
 ```bash
 bandit0@bandit:~$ ls
 readme
 ```
 
-È presente un unico file chiamato `readme`.
+È presente un unico file chiamato `readme`. Il nome è già suggestivo: in ambienti Unix un file `readme` contiene tipicamente istruzioni o informazioni rilevanti.
 
 ### Step 3 – Leggere il file e ottenere la password
+
+Non ci sono ostacoli particolari: si apre il file direttamente con `cat`:
 
 ```bash
 bandit0@bandit:~$ cat readme
 ```
 
-Il file contiene la password per accedere al livello successivo (`bandit1`).
+Il file contiene, oltre a un messaggio introduttivo di OverTheWire, la password per accedere al livello successivo (`bandit1`).
 
-![Terminale: ls e cat readme con password trovata](./screenshots/00-password-trovata.png)
+![Terminale: ls e cat readme con password trovata](./screenshots/01-password-trovata.png)
 
 ---
 
