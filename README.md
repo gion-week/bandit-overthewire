@@ -64,6 +64,20 @@ Ogni cartella `level-XX` rappresenta la risoluzione del livello XX, ovvero i pas
 
 ---
 
+## Ambiente di lavoro
+
+I livelli sono stati risolti su una macchina virtuale con le seguenti caratteristiche:
+
+| Componente | Dettaglio |
+|------------|-----------|
+| Hypervisor | VMware |
+| OS | Ubuntu 25.10 |
+| RAM | 6 GB |
+| Disco | 25 GB |
+| CPU | 2 core |
+
+---
+
 ## Connessione al server
 
 Il server di Bandit è raggiungibile via SSH sulla porta `2220`:
