@@ -38,7 +38,7 @@ Ogni cartella `level-XX` rappresenta la risoluzione del livello XX, ovvero i pas
 | [Level 8](./level-08/README.md) | `sort`, `uniq -u`, righe uniche in un file | ✅ |
 | [Level 9](./level-09/README.md) | `strings`, file binari, pipeline `grep` + `awk` | ✅ |
 | [Level 10](./level-10/README.md) | Encoding Base64, decodifica con `base64 -d` | ✅ |
-| Level 11 | — | ⬜ |
+| [Level 11](./level-11/README.md) | Cifrario ROT13, comando `tr` | ✅ |
 | Level 12 | — | ⬜ |
 | Level 13 | — | ⬜ |
 | Level 14 | — | ⬜ |
