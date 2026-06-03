@@ -40,7 +40,7 @@ Ogni cartella `level-XX` rappresenta la risoluzione del livello XX, ovvero i pas
 | [Level 10](./level-10/README.md) | Encoding Base64, decodifica con `base64 -d` | ✅ |
 | [Level 11](./level-11/README.md) | Cifrario ROT13, comando `tr` | ✅ |
 | [Level 12](./level-12/README.md) | Hexdump e decompressione file, `xdd`,`gzip`,`bzip2`,`tar` | ✅ |
-| [Level 13](./level-13/README.md) | — | ✅ |
+| [Level 13](./level-13/README.md) | Autenticazione SSH con chiave privata, `scp`, modifica permessi con `chmod`  | ✅ |
 | [Level 14](./level-14/README.md) | — | ✅ |
 | [Level 15](./level-15/README.md) | — | ✅ |
 | [Level 16](./level-16/README.md) | — | ✅ |
