@@ -34,33 +34,33 @@ Ogni cartella `level-XX` rappresenta la risoluzione del livello XX, ovvero i pas
 | [Level 4](./level-04/README.md) | Tipi di file, comando `file`, wildcard `*` | ✅ |
 | [Level 5](./level-05/README.md) | Comando `find`, ricerca per dimensione | ✅ |
 | [Level 6](./level-06/README.md) | Ricerca su tutto il filesystem, criteri `find` combinati, stderr | ✅ |
-| [Level 7](./level-07/README.md) | `grep`, pipe `|`, ricerca in file di grandi dimensioni | ✅ |
+| [Level 7](./level-07/README.md) | `grep`, `pipe`, ricerca in file di grandi dimensioni | ✅ |
 | [Level 8](./level-08/README.md) | `sort`, `uniq -u`, righe uniche in un file | ✅ |
 | [Level 9](./level-09/README.md) | `strings`, file binari, pipeline `grep` + `awk` | ✅ |
 | [Level 10](./level-10/README.md) | Encoding Base64, decodifica con `base64 -d` | ✅ |
 | [Level 11](./level-11/README.md) | Cifrario ROT13, comando `tr` | ✅ |
 | [Level 12](./level-12/README.md) | Hexdump e decompressione file, `xdd`,`gzip`,`bzip2`,`tar` | ✅ |
-| Level 13 | — | ⬜ |
-| Level 14 | — | ⬜ |
-| Level 15 | — | ⬜ |
-| Level 16 | — | ⬜ |
-| Level 17 | — | ⬜ |
-| Level 18 | — | ⬜ |
-| Level 19 | — | ⬜ |
-| Level 20 | — | ⬜ |
-| Level 21 | — | ⬜ |
-| Level 22 | — | ⬜ |
-| Level 23 | — | ⬜ |
-| Level 24 | — | ⬜ |
-| Level 25 | — | ⬜ |
-| Level 26 | — | ⬜ |
-| Level 27 | — | ⬜ |
-| Level 28 | — | ⬜ |
-| Level 29 | — | ⬜ |
-| Level 30 | — | ⬜ |
-| Level 31 | — | ⬜ |
-| Level 32 | — | ⬜ |
-| Level 33 | — | ⬜ |
+| [Level 13](./level-13/README.md) | — | ✅ |
+| [Level 14](./level-14/README.md) | — | ✅ |
+| [Level 15](./level-15/README.md) | — | ✅ |
+| [Level 16](./level-16/README.md) | — | ✅ |
+| [Level 17](./level-17/README.md) | — | ✅ |
+| [Level 18](./level-18/README.md) | — | ✅ |
+| [Level 19](./level-19/README.md) | — | ✅ |
+| [Level 20](./level-20/README.md) | — | ✅ |
+| [Level 21](./level-21/README.md) | — | ✅ |
+| [Level 22](./level-22/README.md) | — | ✅ |
+| [Level 23](./level-23/README.md) | — | ✅ |
+| [Level 24](./level-24/README.md) | — | ✅ |
+| [Level 25](./level-25/README.md) | — | ⬜ |
+| [Level 26](./level-26/README.md) | — | ⬜ |
+| [Level 27](./level-27/README.md) | — | ⬜ |
+| [Level 28](./level-28/README.md) | — | ⬜ |
+| [Level 29](./level-29/README.md) | — | ⬜ |
+| [Level 30](./level-30/README.md) | — | ⬜ |
+| [Level 31](./level-31/README.md) | — | ⬜ |
+| [Level 32](./level-32/README.md) | — | ⬜ |
+| [Level 33](./level-33/README.md) | — | ⬜ |
 
 ---
 
