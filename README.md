@@ -44,7 +44,7 @@ Ogni cartella `level-XX` rappresenta la risoluzione del livello XX, ovvero i pas
 | [Level 14](./level-14/README.md) | Connessione TCP con `telnet`, interazione con servizi di rete su porta locale | ✅ |
 | [Level 15](./level-15/README.md) | Connessione SSL/TLS con `openssl s_client`, lettura del manuale | ✅ |
 | [Level 16](./level-16/README.md) | Scansione porte e servizi con `nmap`, identificazione servizio SSL, chiave RSA come credenziale | ✅ |
-| [Level 17](./level-17/README.md) | — | ✅ |
+| [Level 17](./level-17/README.md) | Confronto file con `diff` | ✅ |
 | [Level 18](./level-18/README.md) | — | ✅ |
 | [Level 19](./level-19/README.md) | — | ✅ |
 | [Level 20](./level-20/README.md) | — | ✅ |
