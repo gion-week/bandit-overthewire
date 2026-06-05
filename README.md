@@ -45,8 +45,8 @@ Ogni cartella `level-XX` rappresenta la risoluzione del livello XX, ovvero i pas
 | [Level 15](./level-15/README.md) | Connessione SSL/TLS con `openssl s_client`, lettura del manuale | ✅ |
 | [Level 16](./level-16/README.md) | Scansione porte e servizi con `nmap`, identificazione servizio SSL, chiave RSA come credenziale | ✅ |
 | [Level 17](./level-17/README.md) | Confronto file con `diff` | ✅ |
-| [Level 18](./level-18/README.md) | — | ✅ |
-| [Level 19](./level-19/README.md) | — | ✅ |
+| [Level 18](./level-18/README.md) | Esecuzione comandi remoti via SSH senza shell interattiva, .bashrc e tipi di shell | ✅ |
+| [Level 19](./level-19/README.md) | Bit setuid, eseguibile con privilegi elevati, privilege escalation | ✅ |
 | [Level 20](./level-20/README.md) | — | ✅ |
 | [Level 21](./level-21/README.md) | — | ✅ |
 | [Level 22](./level-22/README.md) | — | ✅ |
