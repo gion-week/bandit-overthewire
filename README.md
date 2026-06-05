@@ -47,7 +47,7 @@ Ogni cartella `level-XX` rappresenta la risoluzione del livello XX, ovvero i pas
 | [Level 17](./level-17/README.md) | Confronto file con `diff` | ✅ |
 | [Level 18](./level-18/README.md) | Esecuzione comandi remoti via SSH senza shell interattiva, .bashrc e tipi di shell | ✅ |
 | [Level 19](./level-19/README.md) | Bit setuid, eseguibile con privilegi elevati, privilege escalation | ✅ |
-| [Level 20](./level-20/README.md) | — | ✅ |
+| [Level 20](./level-20/README.md) | `tmux` e job control, processi concorrenti, `nc` in ascolto, command-line injection | ✅ |
 | [Level 21](./level-21/README.md) | — | ✅ |
 | [Level 22](./level-22/README.md) | — | ✅ |
 | [Level 23](./level-23/README.md) | — | ✅ |
