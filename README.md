@@ -49,7 +49,7 @@ Ogni cartella `level-XX` rappresenta la risoluzione del livello XX, ovvero i pas
 | [Level 19](./level-19/README.md) | Bit setuid, eseguibile con privilegi elevati, privilege escalation | ✅ |
 | [Level 20](./level-20/README.md) | `tmux` e job control, processi concorrenti, `nc` in ascolto, command-line injection | ✅ |
 | [Level 21](./level-21/README.md) | Cron e cronjob, lettura di script pianificati, `/etc/cron.d/` | ✅ |
-| [Level 22](./level-22/README.md) | — | ✅ |
+| [Level 22](./level-22/README.md) | Analisi di script cron, hashing con `md5sum`, parsing con `cut` | ✅ |
 | [Level 23](./level-23/README.md) | — | ✅ |
 | [Level 24](./level-24/README.md) | — | ✅ |
 | [Level 25](./level-25/README.md) | — | ⬜ |
