@@ -49,18 +49,18 @@ Ogni cartella `level-XX` rappresenta la risoluzione del livello XX, ovvero i pas
 | [Level 19](./level-19/README.md) | Bit setuid, eseguibile con privilegi elevati, privilege escalation | ✅ |
 | [Level 20](./level-20/README.md) | `tmux` e job control, processi concorrenti, `nc` in ascolto, command-line injection | ✅ |
 | [Level 21](./level-21/README.md) | Cron e cronjob, lettura di script pianificati, `/etc/cron.d/` | ✅ |
-| [Level 22](./level-22/README.md) | Analisi di script cron, hashing con `md5sum`, parsing con `cut` | ✅ |
-| [Level 23](./level-23/README.md) | — | ✅ |
+| [Level 22](./level-22/README.md) | Analisi di script `cron`, hashing con `md5sum`, parsing con `cut` | ✅ |
+| [Level 23](./level-23/README.md) | Scrittura di script per `cron`, analisi di script complessi, permessi per esecuzione cross-utente | ✅ |
 | [Level 24](./level-24/README.md) | — | ✅ |
-| [Level 25](./level-25/README.md) | — | ⬜ |
-| [Level 26](./level-26/README.md) | — | ⬜ |
-| [Level 27](./level-27/README.md) | — | ⬜ |
-| [Level 28](./level-28/README.md) | — | ⬜ |
-| [Level 29](./level-29/README.md) | — | ⬜ |
-| [Level 30](./level-30/README.md) | — | ⬜ |
-| [Level 31](./level-31/README.md) | — | ⬜ |
-| [Level 32](./level-32/README.md) | — | ⬜ |
-| [Level 33](./level-33/README.md) | — | ⬜ |
+| [Level 25](./level-25/README.md) | — | ✅ |
+| [Level 26](./level-26/README.md) | — | ✅ |
+| [Level 27](./level-27/README.md) | — | ✅ |
+| [Level 28](./level-28/README.md) | — | ✅ |
+| [Level 29](./level-29/README.md) | — | ✅ |
+| [Level 30](./level-30/README.md) | — | ✅ |
+| [Level 31](./level-31/README.md) | — | ✅ |
+| [Level 32](./level-32/README.md) | — | ✅ |
+| [Level 33](./level-33/README.md) | — | ✅ |
 
 ---
 
