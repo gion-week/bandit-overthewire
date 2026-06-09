@@ -51,7 +51,7 @@ Ogni cartella `level-XX` rappresenta la risoluzione del livello XX, ovvero i pas
 | [Level 21](./level-21/README.md) | Cron e cronjob, lettura di script pianificati, `/etc/cron.d/` | ✅ |
 | [Level 22](./level-22/README.md) | Analisi di script `cron`, hashing con `md5sum`, parsing con `cut` | ✅ |
 | [Level 23](./level-23/README.md) | Scrittura di script per `cron`, analisi di script complessi, permessi per esecuzione cross-utente | ✅ |
-| [Level 24](./level-24/README.md) | — | ✅ |
+| [Level 24](./level-24/README.md) | Bruteforce con script bash, brace expansion, `ss` per porte locali | ✅ |
 | [Level 25](./level-25/README.md) | — | ✅ |
 | [Level 26](./level-26/README.md) | — | ✅ |
 | [Level 27](./level-27/README.md) | — | ✅ |
