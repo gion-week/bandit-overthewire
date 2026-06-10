@@ -56,7 +56,7 @@ Ogni cartella `level-XX` rappresenta la risoluzione del livello XX, ovvero i pas
 | [Level 26](./level-26/README.md) | Binario setuid (come livello 19), continuità dalla shell `vim` del livello precedente | ✅ |
 | [Level 27](./level-27/README.md) | `git`, `git clone` via SSH, struttura di un repository | ✅ |
 | [Level 28](./level-28/README.md) | `git log` e `git show`, recupero di dati rimossi dalla storia dei commit | ✅ |
-| [Level 29](./level-29/README.md) | — | ✅ |
+| [Level 29](./level-29/README.md) | Branch remoti git, `packed-refs`, `git checkout` e struttura di `.git/` | ✅ |
 | [Level 30](./level-30/README.md) | — | ✅ |
 | [Level 31](./level-31/README.md) | — | ✅ |
 | [Level 32](./level-32/README.md) | — | ✅ |
