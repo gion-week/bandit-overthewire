@@ -52,10 +52,10 @@ Ogni cartella `level-XX` rappresenta la risoluzione del livello XX, ovvero i pas
 | [Level 22](./level-22/README.md) | Analisi di script `cron`, hashing con `md5sum`, parsing con `cut` | ✅ |
 | [Level 23](./level-23/README.md) | Scrittura di script per `cron`, analisi di script complessi, permessi per esecuzione cross-utente | ✅ |
 | [Level 24](./level-24/README.md) | Bruteforce con script bash, brace expansion, `ss` per porte locali | ✅ |
-| [Level 25](./level-25/README.md) | — | ✅ |
-| [Level 26](./level-26/README.md) | — | ✅ |
-| [Level 27](./level-27/README.md) | — | ✅ |
-| [Level 28](./level-28/README.md) | — | ✅ |
+| [Level 25](./level-25/README.md) | Shell non standard, fuga da `more` tramite `vim`, `PuTTY` | ✅ |
+| [Level 26](./level-26/README.md) | Binario setuid (come livello 19), continuità dalla shell `vim` del livello precedente | ✅ |
+| [Level 27](./level-27/README.md) | `git`, `git clone` via SSH, struttura di un repository | ✅ |
+| [Level 28](./level-28/README.md) | `git log` e `git show`, recupero di dati rimossi dalla storia dei commit | ✅ |
 | [Level 29](./level-29/README.md) | — | ✅ |
 | [Level 30](./level-30/README.md) | — | ✅ |
 | [Level 31](./level-31/README.md) | — | ✅ |
