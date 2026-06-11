@@ -38,7 +38,7 @@ passwords.new  passwords.old
 
 Sono presenti esattamente due file. L'obiettivo specifica che una sola riga differisce tra i due: `diff` è lo strumento diretto per questo compito, senza bisogno di passi intermedi.
 
-Per convenzione si passa prima il file "vecchio" e poi il "nuovo", in modo che l'output sia leggibile nella direzione logica del cambiamento — da `old` a `new`:
+Per convenzione si passa prima il file "vecchio" e poi il "nuovo", in modo che l'output sia leggibile nella direzione logica del cambiamento da `old` a `new`:
 
 ```bash
 bandit17@bandit:~$ diff passwords.old passwords.new
@@ -48,7 +48,7 @@ bandit17@bandit:~$ diff passwords.old passwords.new
 > x2gL[...]
 ```
 
-La riga preceduta da `>` è quella presente in `passwords.new` ma non in `passwords.old`: è la password per accedere al livello successivo (`bandit18`).
+La riga preceduta da `>` è quella presente in `passwords.new` ma non in `passwords.old`: è la password per accedere al livello successivo.
 
 ![Terminale: ls e diff passwords.old passwords.new con output](./screenshots/17-diff.png)
 
@@ -87,7 +87,7 @@ In questo livello entrambe le righe occupano la stessa posizione (42) nei rispet
 
 `diff` nasce per confrontare file di testo riga per riga, ma i suoi casi d'uso reali vanno ben oltre il semplice confronto visivo:
 
-In **sviluppo software** è alla base del controllo di versione: `git diff` usa internamente lo stesso algoritmo per mostrare le modifiche tra commit, branch o rispetto all'area di staging. L'output di `diff` in formato unificato (`diff -u`) è il formato standard dei **patch file** — file che descrivono le modifiche da applicare a un sorgente per aggiornarlo, distribuiti storicamente via email nelle mailing list dei kernel e dei progetti open source, e ancora oggi usati da `git apply` e `patch`.
+In **sviluppo software** è alla base del controllo di versione: `git diff` usa internamente lo stesso algoritmo per mostrare le modifiche tra commit, branch o rispetto all'area di staging. L'output di `diff` in formato unificato (`diff -u`) è il formato standard dei **patch file**, file che descrivono le modifiche da applicare a un sorgente per aggiornarlo, distribuiti storicamente via email nelle mailing list dei kernel e dei progetti open source e ancora oggi usati da `git apply` e `patch`.
 
 In **amministrazione di sistema** è utile per confrontare file di configurazione tra versioni (`diff /etc/nginx/nginx.conf /etc/nginx/nginx.conf.bak`), verificare che un deployment abbia modificato solo i file attesi, o confrontare l'output di due esecuzioni dello stesso script.
 
@@ -102,6 +102,6 @@ bandit17@bandit:~$ grep -Fxvf passwords.old passwords.new
 x2gL[...]
 ```
 
-I flag usati: `-F` disabilita le regex trattando il pattern come stringa letterale; `-x` richiede la corrispondenza dell'intera riga (non solo una sottostringa); `-v` inverte il match (seleziona le righe che *non* corrispondono); `-f passwords.old` usa il contenuto di `passwords.old` come lista di pattern. Il risultato è l'insieme delle righe di `passwords.new` che non compaiono in nessuna forma identica in `passwords.old` — in questo caso, esattamente la riga modificata.
+I flag usati: `-F` disabilita le regex trattando il pattern come stringa letterale; `-x` richiede la corrispondenza dell'intera riga (non solo una sottostringa); `-v` inverte il match (seleziona le righe che *non* corrispondono); `-f passwords.old` usa il contenuto di `passwords.old` come lista di pattern. Il risultato è l'insieme delle righe di `passwords.new` che non compaiono in nessuna forma identica in `passwords.old`.
 
 È meno leggibile di `diff` per un confronto generico, ma più conciso quando si vuole estrarre direttamente le righe uniche senza visualizzare il contesto del cambiamento.

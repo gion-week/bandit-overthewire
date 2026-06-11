@@ -33,7 +33,7 @@ ssh bandit0@bandit.labs.overthewire.org -p 2220
 
 ### Step 1 – Connettersi al server via SSH
 
-Il sito di OverTheWire fornisce direttamente le credenziali per il Level 0, rendendo questo primo step puramente introduttivo alla meccanica del gioco. Si esegue il comando SSH specificando utente, host e porta — tre parametri che torneranno invariati per tutti i livelli successivi, cambiando solo il numero utente:
+Il sito di OverTheWire fornisce direttamente le credenziali per il Level 0, rendendo questo primo step puramente introduttivo alla meccanica del gioco. Si esegue il comando SSH specificando utente, host e porta, tre parametri che torneranno invariati per tutti i livelli successivi cambiando solo il nome utente:
 
 ```bash
 ssh bandit0@bandit.labs.overthewire.org -p 2220

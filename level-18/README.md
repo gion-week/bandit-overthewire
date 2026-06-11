@@ -70,7 +70,7 @@ gion-week@UbuntuWare:~$ ssh bandit18@bandit.labs.overthewire.org -p 2220 cat rea
 [password bandit19]
 ```
 
-SSH esegue `cat readme` sul server, stampa l'output in locale e chiude la connessione — senza che `.bashrc` venga mai eseguito.
+SSH esegue `cat readme` sul server, stampa l'output in locale e chiude la connessione senza che `.bashrc` venga mai eseguito.
 
 ![Terminale: ssh con cat readme e password trovata](./screenshots/18-password.png)
 
@@ -91,7 +91,7 @@ Le due righe aggiunte in coda a `.bashrc` sono:
 - `echo 'Byebye !'` — stampa il messaggio di commiato visibile nel tentativo di login normale
 - `exit 0` — termina la shell con codice di uscita `0`
 
-Il codice `0` indica convenzionalmente successo in Unix: la shell non sta segnalando un errore, sta semplicemente terminando in modo pulito. Questo è intenzionale — l'obiettivo della modifica è disconnettere l'utente, non simulare un crash. L'effetto pratico per SSH è lo stesso: la sessione si chiude prima che il prompt venga mostrato.
+Il codice `0` indica convenzionalmente successo in Unix: la shell non sta segnalando un errore, sta semplicemente terminando in modo pulito. Questo è intenzionale dato che l'obiettivo della modifica è disconnettere l'utente, non simulare un crash. L'effetto pratico per SSH è lo stesso: la sessione si chiude prima che il prompt venga mostrato.
 
 ---
 
@@ -105,7 +105,7 @@ bash distingue tra diversi tipi di shell, ognuno con un insieme diverso di file 
 - **Shell interattiva non-login** (terminale grafico, nuova scheda nel terminale): carica `~/.bashrc`
 - **Shell non interattiva** (esecuzione di un comando via `ssh host comando`, script): non carica né `.bashrc` né `.bash_profile`
 
-In questo livello la modifica colpisce solo la shell interattiva non-login. Passare un comando direttamente a SSH avvia una shell non interattiva che non carica `.bashrc`, aggirando completamente il meccanismo. È questo comportamento documentato di bash — non una vulnerabilità — a rendere possibile la soluzione.
+In questo livello la modifica colpisce solo la shell interattiva non-login. Passare un comando direttamente a SSH avvia una shell non interattiva che non carica `.bashrc`, aggirando completamente il meccanismo. È questo comportamento documentato di bash e non una vulnerabilità a rendere possibile la soluzione.
 
 **Metodo alternativo: shell alternativa con `ssh -t`**
 
@@ -123,4 +123,4 @@ $ cat readme
 [password bandit19]
 ```
 
-Lo svantaggio rispetto al comando diretto è che apre una sessione interattiva completa — utile quando si vuole esplorare il filesystem, non necessario quando il file da leggere è già noto.
+Lo svantaggio rispetto al comando diretto è che apre una sessione interattiva completa, utile quando si vuole esplorare il filesystem, non necessario quando il file da leggere è già noto.

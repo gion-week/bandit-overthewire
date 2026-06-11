@@ -95,7 +95,7 @@ PORT      STATE SERVICE
 ...
 ```
 
-`nmap` funziona inviando pacchetti TCP (o UDP) a ciascuna porta e analizzando la risposta: una porta che risponde con il flag `SYN-ACK` è aperta, una che risponde con `RST` è chiusa, una che non risponde è filtrata (probabilmente da un firewall). Per ogni porta aperta tenta anche di identificare il servizio in esecuzione confrontando il banner o il comportamento con un database interno. La porta `30000` non corrisponde a nessun servizio noto, quindi verrebbe classificata come `unknown` — ma sarebbe comunque visibile e raggiungibile.
+`nmap` funziona inviando pacchetti TCP (o UDP) a ciascuna porta e analizzando la risposta: una porta che risponde con il flag `SYN-ACK` è aperta, una che risponde con `RST` è chiusa, una che non risponde è filtrata (probabilmente da un firewall). Per ogni porta aperta tenta anche di identificare il servizio in esecuzione confrontando il banner o il comportamento con un database interno. La porta `30000` non corrisponde a nessun servizio noto e verrebbe classificata come `unknown` anche se sarebbe comunque visibile e raggiungibile.
 
 **Metodo alternativo: `nc` al posto di `telnet`**
 

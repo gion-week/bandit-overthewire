@@ -50,7 +50,7 @@ If you have trouble with this level, note the following:
    We mean it!
 ```
 
-Sono presenti due file: `sshkey.private` e `HINT`. Il file HINT chiarisce subito un punto rilevante: non è possibile usare la chiave per connettersi a `bandit14` tramite `localhost` dall'interno della sessione corrente. Il collegamento deve avvenire usando l'hostname esterno del server — o, come si vedrà, copiando prima la chiave in locale.
+Sono presenti due file: `sshkey.private` e `HINT`. Il file HINT chiarisce subito un punto rilevante: non è possibile usare la chiave per connettersi a `bandit14` tramite `localhost` dall'interno della sessione corrente. Il collegamento deve avvenire usando l'hostname esterno del server o, come si vedrà, copiando prima la chiave in locale.
 
 ### Step 2 – Esaminare la chiave privata
 
@@ -96,7 +96,7 @@ Load key "bandit14_sshkey": bad permissions
 bandit14@bandit.labs.overthewire.org's password:
 ```
 
-SSH ignora la chiave e ricade sull'autenticazione via password — che non si conosce. Il client non si blocca né lancia un errore fatale: semplicemente tratta la chiave come non utilizzabile e procede con il meccanismo successivo disponibile.
+SSH ignora la chiave e ricade sull'autenticazione via password. Il client non si blocca né lancia un errore fatale: semplicemente tratta la chiave come non utilizzabile e procede con il meccanismo successivo disponibile.
 
 ![Terminale: SSH con chiave a permessi 0640, warning e fallback a password](./screenshots/13-key-unprotected.png)
 
@@ -141,7 +141,7 @@ bandit14@bandit:~$ cat /etc/bandit_pass/bandit14
 scp -P <porta> utente@host:percorso/remoto /percorso/locale/destinazione
 ```
 
-La direzione si legge come in `cp`: il primo argomento è l'origine, il secondo è la destinazione. Nel caso di questo livello, l'origine è il file sul server Bandit e la destinazione è la home della VM locale — il trasferimento avviene quindi dal server verso la VM, iniziato dalla VM stessa (modalità *pull*).
+La direzione si legge come in `cp`: il primo argomento è l'origine, il secondo è la destinazione. Nel caso di questo livello, l'origine è il file sul server Bandit e la destinazione è la home della VM locale: il trasferimento avviene quindi dal server verso la VM, iniziato dalla VM stessa (modalità *pull*).
 
 **Sarebbe stato possibile fare il contrario, avviando il trasferimento dal server?**
 
@@ -181,11 +181,11 @@ Nonostante il HINT avverta che OverTheWire blocca le connessioni tra livelli via
 bandit13@bandit:~$ ssh -i sshkey.private bandit14@bandit.labs.overthewire.org -p 2220
 ```
 
-Questo elimina il passaggio `scp` e il problema dei permessi sulla macchina locale, ma richiede di fare una connessione SSH dal server verso se stesso tramite indirizzo pubblico — approccio funzionalmente equivalente ma meno comune in scenari reali.
+Questo elimina il passaggio `scp` e il problema dei permessi sulla macchina locale, ma richiede di fare una connessione SSH dal server verso se stesso tramite indirizzo pubblico, approccio funzionalmente equivalente ma meno comune in scenari reali.
 
 **Perché `chmod 600` è obbligatorio e cosa significa `0640`**
 
-SSH implementa un controllo esplicito sui permessi delle chiavi private prima di usarle, e il comportamento osservato in questo livello mostra esattamente come funziona. Il file copiato con `scp` aveva permessi `0640`:
+SSH implementa un controllo esplicito sui permessi delle chiavi private prima di usarle e il comportamento osservato in questo livello mostra esattamente come funziona. Il file copiato con `scp` aveva permessi `0640`:
 
 ```
 Permissions 0640 for 'bandit14_sshkey' are too open.
@@ -204,4 +204,4 @@ Il valore `0640` è la rappresentazione ottale dei permessi Unix. Ogni cifra cop
 
 Il gruppo ha accesso in lettura: questo è sufficiente perché SSH consideri il file compromissibile. La logica è che qualsiasi altro utente appartenente allo stesso gruppo potrebbe leggere la chiave privata, quindi SSH non può garantire che sia rimasta riservata.
 
-`chmod 600` imposta la tripletta a `rw-------`: il gruppo e gli altri scendono a zero. SSH considera accettabile solo questo stato (o uno più restrittivo, come `400` — sola lettura per il proprietario). Quando SSH rileva che la chiave è troppo permissiva non restituisce un errore fatale, ma la scarta silenziosamente e ricade sull'autenticazione via password — comportamento che si vede chiaramente nello screenshot, dove il prompt `bandit14@...'s password:` compare pur avendo specificato `-i`.
+`chmod 600` imposta la tripletta a `rw-------`: il gruppo e gli altri scendono a zero. SSH considera accettabile solo questo stato (o uno più restrittivo, come `400` — sola lettura per il proprietario). Quando SSH rileva che la chiave è troppo permissiva non restituisce un errore fatale ma la scarta silenziosamente e ricade sull'autenticazione via password, comportamento che si vede chiaramente nello screenshot, dove il prompt `bandit14@...'s password:` compare pur avendo specificato `-i`.

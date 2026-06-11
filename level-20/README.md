@@ -144,10 +144,10 @@ Il job control è un meccanismo integrato in bash (e nelle shell POSIX in genera
 - `bg %N` — riprende in background un job sospeso
 - `Ctrl+Z` — sospende il processo in foreground (stato `Stopped`), restituendo il prompt
 
-Nel contesto di questo livello, `&` è sufficiente perché il listener deve solo aspettare una connessione e poi terminare. In scenari più complessi — server che girano a lungo, processi che producono output — tmux è preferibile perché il job in background condivide lo stesso stdout del terminale, il che può sovrapporre output di processi diversi in modo confuso.
+Nel contesto di questo livello, `&` è sufficiente perché il listener deve solo aspettare una connessione e poi terminare. In scenari più complessi (come server che girano a lungo o processi che producono output) tmux è preferibile perché il job in background condivide lo stesso stdout del terminale, il che può sovrapporre output di processi diversi in modo confuso.
 
 La differenza tra `-l 8080` e `-lp 8080` nella chiamata a `nc`: `-l` attiva la modalità listen; la porta può essere specificata come argomento posizionale (`nc -l 8080`, sintassi ncat moderna) o con il flag esplicito `-p` (`nc -lp 8080`, sintassi compatibile con versioni più vecchie di netcat). Entrambe funzionano sulla versione installata sul server.
 
 **Permessi e gestione dei segreti in `/etc/bandit_pass/`**
 
-Il file system Linux gestisce l'accesso ai file tramite i permessi POSIX standard. L'utente `bandit20` non ha i privilegi per leggere i file degli altri livelli, ma ha accesso esclusivo in lettura al proprio. L'utilizzo di `cat` combinato alla pipe `|` verso un'utility di rete come `nc` rappresenta una buona pratica di command-line injection controllata, poiché evita di memorizzare informazioni sensibili (la password in chiaro) nella cronologia della shell (`.bash_history`).
+Il file system Linux gestisce l'accesso ai file tramite i permessi POSIX standard. L'utente `bandit20` non ha i privilegi per leggere i file degli altri livelli, ma ha accesso esclusivo in lettura al proprio. L'utilizzo di `cat` combinato alla pipe `|` verso un'utility di rete come `nc` rappresenta una buona pratica di command-line injection controllata, poiché evita di memorizzare informazioni sensibili, come in questo caso la password in chiaro, nella cronologia della shell (`.bash_history`).

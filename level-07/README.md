@@ -44,7 +44,7 @@ drwxr-xr-x 150 root    root          4096 Apr  3 15:20 ..
 -rw-r--r--   1 root    root           807 Mar 31  2024 .profile
 ```
 
-`data.txt` è immediatamente riconoscibile: pesa circa 4 MB, un ordine di grandezza molto superiore agli altri file. Un `cat` diretto inonderà il terminale con migliaia di righe, rendendo impossibile trovare manualmente quella cercata. L'obiettivo specifica però una parola chiave precisa — `millionth` — che consente di filtrare l'output invece di scorrerlo integralmente.
+`data.txt` è immediatamente riconoscibile: pesa circa 4 MB, un ordine di grandezza molto superiore agli altri file. Un `cat` diretto inonderà il terminale con migliaia di righe, rendendo impossibile trovare manualmente quella cercata. L'obiettivo specifica però una parola chiave precisa, `millionth`, che consente di filtrare l'output invece di scorrerlo integralmente.
 
 ![Terminale: ls -al con dimensione di data.txt in evidenza](./screenshots/07-dimensione-file.png)
 
@@ -79,4 +79,4 @@ L'operatore `|` collega due comandi in sequenza: lo stdout del comando a sinistr
 bandit7@bandit:~$ grep millionth data.txt
 ```
 
-Il risultato è identico, ma il comando è più conciso ed efficiente: elimina un processo (`cat`) e una pipe, leggendo il file direttamente. Passare l'input a `grep` tramite `cat` è un pattern così comune da avere un nome proprio — **Useless Use of Cat** (UUoC) — ed è considerato cattiva pratica quando `grep` può gestire il file autonomamente.
+Il risultato è identico, ma il comando è più conciso ed efficiente: elimina un processo (`cat`) e una pipe, leggendo il file direttamente. Passare l'input a `grep` tramite `cat` è un pattern così comune da avere un nome proprio: **Useless Use of Cat** (UUoC), che è inoltre considerato cattiva pratica quando `grep` può gestire il file autonomamente.

@@ -37,7 +37,7 @@ bandit10@bandit:~$ ls -a
 .  ..  .bash_logout  .bashrc  data.txt  .profile
 ```
 
-È presente `data.txt`. L'obiettivo specifica che il contenuto è codificato in Base64, quindi un `cat` restituirebbe una stringa apparentemente casuale di caratteri alfanumerici — non la password in chiaro. Il comando `base64` con il flag `-d` (decode) gestisce direttamente la decodifica leggendo il file:
+È presente `data.txt`. L'obiettivo specifica che il contenuto è codificato in Base64, quindi un `cat` restituirebbe una stringa apparentemente casuale di caratteri alfanumerici e non la password in chiaro. Il comando `base64` con il flag `-d` (decode) gestisce direttamente la decodifica leggendo il file:
 
 ```bash
 bandit10@bandit:~$ base64 -d data.txt

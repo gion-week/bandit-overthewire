@@ -49,7 +49,7 @@ drwxr-xr-x 150 root    root     4096 Apr  3 15:20 ..
 
 ### Step 2 – Ordinare e filtrare le righe uniche
 
-`uniq` da solo non è sufficiente: individua duplicati solo tra righe **adiacenti**, quindi se le righe identiche sono sparse nel file le lascerebbe passare tutte. Per questo motivo si usa prima `sort`, che raggruppa fisicamente le righe identiche mettendole in sequenza — dopodiché `uniq -u` può riconoscerle correttamente e restituire solo quella che non ha duplicati:
+`uniq` da solo non è sufficiente: individua duplicati solo tra righe **adiacenti**, quindi se le righe identiche sono sparse nel file le lascerebbe passare tutte. Per questo motivo si usa prima `sort`, che raggruppa fisicamente le righe identiche mettendole in sequenza, dopodiché `uniq -u` può riconoscerle correttamente e restituire solo quella che non ha duplicati:
 
 ```bash
 bandit8@bandit:~$ sort data.txt | uniq -u

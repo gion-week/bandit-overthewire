@@ -68,7 +68,7 @@ $DwH
 ...
 ```
 
-L'output contiene molte stringhe brevi e apparentemente casuali — frammenti leggibili del contenuto binario. Utile per confermare che il file ha porzioni testuali, ma troppo verboso per trovare direttamente la riga cercata.
+L'output contiene molte stringhe brevi apparentemente casuali che risultano essere alcuni frammenti leggibili del contenuto binario: utile per confermare che il file ha porzioni testuali, troppo verboso per trovare direttamente la riga cercata.
 
 ![Terminale: strings data.txt con output di stringhe leggibili](./screenshots/09-strings.png)
 
@@ -107,4 +107,4 @@ bandit9@bandit:~$ strings data.txt | grep "=====" | awk '{print $NF}' | xargs
 the password is FGU...
 ```
 
-`awk '{print $NF}'` stampa solo l'ultimo campo di ogni riga (il testo dopo i `=====`), eliminando i caratteri `=` e i prefissi numerici. `xargs` senza argomenti concatena le righe in una sola, separate da spazi — restituendo la frase completa in forma leggibile.
+`awk '{print $NF}'` stampa solo l'ultimo campo di ogni riga (il testo dopo `=====`), eliminando i caratteri `=` e i prefissi numerici. `xargs` senza argomenti concatena le righe in una sola, separate da spazi, e restituendo la frase completa in forma leggibile.

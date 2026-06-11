@@ -98,7 +98,7 @@ Il file contiene la password per accedere al livello successivo (`bandit7`).
 
 **Combinare criteri in `find`**
 
-Questo livello mostra concretamente perché affidarsi a un solo criterio di ricerca può essere insufficiente. La dimensione di 33 byte è condivisa da decine di file sul server; aggiungere `-user bandit7` ha ridotto i risultati da decine a due soli file. In generale, più criteri si combinano, più la ricerca è precisa. `find` supporta anche `-group` per filtrare per gruppo di appartenenza — in questo caso sarebbe stato equivalente aggiungere `-group bandit6`.
+Questo livello mostra concretamente perché affidarsi a un solo criterio di ricerca può essere insufficiente. La dimensione di 33 byte è condivisa da decine di file sul server; aggiungere `-user bandit7` ha ridotto i risultati da decine a due soli file. In generale, più criteri si combinano, più la ricerca è precisa. `find` supporta anche `-group` per filtrare per gruppo di appartenenza, ad esempio in questo caso sarebbe stato equivalente aggiungere `-group bandit6`.
 
 **Redirezione di stderr con `2>/dev/null`**
 

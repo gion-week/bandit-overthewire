@@ -52,7 +52,7 @@ PORT      STATE SERVICE
 Nmap done: 1 IP address (1 up) scanned in 0.06 seconds
 ```
 
-Su 1000 porte scansionate, 5 risultano aperte — tutte classificate come `unknown`. La scansione base non è sufficiente per distinguerle: serve un secondo passaggio con rilevamento dei servizi.
+Su 1000 porte scansionate, 5 risultano aperte, tutte classificate come `unknown`. La scansione base non è sufficiente per distinguerle: serve un secondo passaggio con rilevamento dei servizi.
 
 ![Terminale: nmap -p31000-32000 con 5 porte aperte](./screenshots/16-port-scan-range.png)
 
@@ -80,7 +80,7 @@ SF-Port31790-TCP:... "Wrong!\x20Please\x20enter\x20the\x20correct\x20current\x20
 Il quadro è ora chiaro:
 
 - Le porte `31046`, `31691`, `31960` eseguono un semplice **echo**: rimandano indietro esattamente ciò che ricevono, senza SSL.
-- La porta `31518` è **ssl/echo**: stesso comportamento ma su canale cifrato — non utile.
+- La porta `31518` è **ssl/echo**: stesso comportamento ma su canale cifrato.
 - La porta `31790` è **ssl/unknown**: usa SSL ma il servizio non è riconoscibile. Il fingerprint che nmap allega contiene la stringa `"Wrong! Please enter the correct current password."`, confermando che si tratta di un servizio interattivo che accetta input e valida la password. È la porta cercata.
 
 ![Terminale: nmap -sV con servizi identificati e fingerprint di 31790](./screenshots/16-single-port-scan.png)
@@ -99,7 +99,7 @@ imZzeyGC0gtZPGujUSxiJSWI/oTqexh+cAMTSMlOJf7+BrJObArnxd9Y7YT2bRPQ
 -----END RSA PRIVATE KEY-----
 ```
 
-Il server non restituisce una password testuale come nei livelli precedenti, ma una **chiave privata RSA** — le credenziali per accedere a `bandit17`, analogamente a quanto avvenuto nel livello 13.
+Il server non restituisce una password testuale come nei livelli precedenti ma una **chiave privata RSA** che si potrà usare come credenziale per accedere a `bandit17`, analogamente a quanto avvenuto nel livello 13.
 
 ![Terminale: ncat --ssl localhost 31790, Correct! e chiave RSA](./screenshots/16-key-found.png)
 
@@ -125,19 +125,19 @@ gion-week@UbuntuWare:~$ chmod 600 bandit17_key && ls -l | grep bandit17_key
 
 **`nmap -sV` e il service fingerprinting**
 
-La scansione base di nmap si limita a stabilire se una porta accetta connessioni TCP (stato `open`, `closed`, o `filtered`). Il flag `-sV` aggiunge un secondo livello di analisi: nmap invia una serie di probe — stringhe di testo, richieste HTTP, handshake SSL, e altri pattern — e confronta le risposte con un database interno di oltre 11.000 firme di servizi noti. Se il comportamento corrisponde a una firma conosciuta, classifica il servizio con nome e versione (`ssl/echo`, `echo`, ecc.); se non corrisponde a nulla, lo marca come `unknown` e allega il raw fingerprint all'output.
+La scansione base di nmap si limita a stabilire se una porta accetta connessioni TCP (stato `open`, `closed`, o `filtered`). Il flag `-sV` aggiunge un secondo livello di analisi: nmap invia una serie di probe (stringhe di testo, richieste HTTP, handshake SSL, e altri pattern) e confronta le risposte con un database interno di oltre 11.000 firme di servizi noti. Se il comportamento corrisponde a una firma conosciuta, classifica il servizio con nome e versione (`ssl/echo`, `echo`, ecc.); se non corrisponde a nulla, lo marca come `unknown` e allega il raw fingerprint all'output.
 
-In questo livello il fingerprint di `31790` contiene già la stringa che il server invia quando riceve input non valido (`"Wrong! Please enter the correct current password."`): nmap ha aperto una connessione SSL, inviato dei probe, e il server ha risposto con questo messaggio — abbastanza per capire che è il servizio cercato, ancora prima di connettersi manualmente.
+In questo livello il fingerprint di `31790` contiene già la stringa che il server invia quando riceve input non valido (`"Wrong! Please enter the correct current password."`): nmap ha aperto una connessione SSL, inviato dei probe, e il server ha risposto con questo messaggio, abbastanza per capire che è il servizio cercato ancora prima di connettersi manualmente.
 
 Il costo di `-sV` rispetto a una scansione base è il tempo: in questo caso 157 secondi contro 0.06 secondi, perché ogni porta richiede una sequenza di tentativi attivi.
 
 **Metodo alternativo: catturare la chiave direttamente dalla VM locale**
 
-Il passaggio manuale con `nano` (copiare il testo dal terminale e incollarlo) è funzionale ma soggetto a errori — un carattere mancante o una riga tagliata rendono la chiave inutilizzabile. Un approccio più robusto è eseguire il comando sul server remoto direttamente dalla VM locale tramite `ssh` con esecuzione di comando in linea, reindirizzando l'output direttamente in un file locale:
+Il passaggio manuale con `nano` (copiare il testo dal terminale e incollarlo) è funzionale ma soggetto a errori dato che un carattere mancante o una riga tagliata rendono la chiave inutilizzabile. Un approccio più robusto è eseguire il comando sul server remoto direttamente dalla VM locale tramite `ssh` con esecuzione di comando in linea, reindirizzando l'output direttamente in un file locale:
 
 ```bash
 gion-week@UbuntuWare:~$ ssh bandit16@bandit.labs.overthewire.org -p 2220 \
   "echo '[password bandit16]' | ncat --ssl localhost 31790" > bandit17_key
 ```
 
-Questa sintassi esegue il comando tra virgolette sul server remoto e redirige lo `stdout` della sessione SSH — che include l'output del comando, ovvero la chiave RSA — direttamente nel file `bandit17_key` sulla macchina locale, senza aprire una sessione interattiva né copiare manualmente nulla. Dopo l'esecuzione è sufficiente applicare `chmod 600` come di consueto. Il vantaggio è l'assenza di errori umani nel copia-incolla; il limite è che l'output include anche eventuali messaggi di benvenuto del server SSH, che andrebbero rimossi se presenti prima dell'intestazione `-----BEGIN RSA PRIVATE KEY-----`.
+Questa sintassi esegue il comando tra virgolette sul server remoto e redirige lo `stdout` della sessione SSH (che include l'output del comando, ovvero la chiave RSA) direttamente nel file `bandit17_key` sulla macchina locale, senza aprire una sessione interattiva né copiare manualmente nulla. Dopo l'esecuzione è sufficiente applicare `chmod 600` come di consueto. Il vantaggio è l'assenza di errori umani nel copia-incolla, il limite è che l'output include anche eventuali messaggi di benvenuto del server SSH che andrebbero rimossi, se presenti, prima dell'intestazione `-----BEGIN RSA PRIVATE KEY-----`.

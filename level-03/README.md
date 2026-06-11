@@ -38,7 +38,7 @@ bandit3@bandit:~$ ls
 inhere
 ```
 
-È presente una sola cartella chiamata `inhere`. L'obiettivo dice esplicitamente che il file è nascosto, quindi è già chiaro che `ls` da solo non sarà sufficiente — servirà il flag `-a`.
+È presente una sola cartella chiamata `inhere`. L'obiettivo dice esplicitamente che il file è nascosto, quindi è già chiaro che `ls` da solo non sarà sufficiente e servirà il flag `-a`.
 
 ### Step 2 – Cercare file nascosti nella home
 

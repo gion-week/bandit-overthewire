@@ -48,7 +48,7 @@ PORT      STATE SERVICE
 Nmap done: 1 IP address (1 up) scanned in 0.04 seconds
 ```
 
-La porta è classificata come `pago-services1`, un'etichetta che non corrisponde a nessun protocollo standard riconosciuto da nmap — segnale che il servizio è custom. L'obiettivo specifica che la connessione deve essere SSL/TLS, quindi `telnet` o `nc` semplici non bastano. Serve uno strumento che gestisca l'handshake crittografico. Il punto di partenza naturale è `openssl`, eseguito senza argomenti per vedere quali sottocomandi offre:
+La porta è classificata come `pago-services1`, un'etichetta che non corrisponde a nessun protocollo standard riconosciuto da nmap, segnale che il servizio è custom. L'obiettivo specifica che la connessione deve essere SSL/TLS, quindi `telnet` o `nc` semplici non bastano. Serve uno strumento che gestisca l'handshake crittografico: il punto di partenza naturale è `openssl`, eseguito senza argomenti per vedere quali sottocomandi offre:
 
 ```bash
 bandit15@bandit:~$ openssl
@@ -117,7 +117,7 @@ Network options:
  ...
 ```
 
-Il flag `-connect` accetta `host:porta` e ha come default la porta `4433` — il valore da sovrascrivere con `localhost:30001`. La sintassi è ora chiara.
+Il flag `-connect` accetta `host:porta` e ha come default la porta `4433`, il valore da sovrascrivere con `localhost:30001`. La sintassi è ora chiarissima.
 
 ![Terminale: openssl s_client -help con -connect evidenziato](./screenshots/15-s_client-command.png)
 
@@ -127,7 +127,7 @@ Il flag `-connect` accetta `host:porta` e ha come default la porta `4433` — il
 bandit15@bandit:~$ openssl s_client -connect localhost:30001
 ```
 
-Dopo la fase di handshake SSL — che produce un output esteso con i dettagli del certificato, la cipher suite negoziata e i dati crittografici della sessione — il terminale entra in modalità interattiva (`read R BLOCK`). Si incolla la password di `bandit15` e si preme invio:
+Dopo la fase di handshake SSL (che produce un output esteso con i dettagli del certificato e la cipher suite negoziata e i dati crittografici della sessione) il terminale entra in modalità interattiva (`read R BLOCK`). Si incolla la password di `bandit15` e si preme invio:
 
 ```
 ...
@@ -151,11 +151,11 @@ Il server risponde `Correct!`, restituisce la password per il livello successivo
 
 **L'importanza del manuale in fasi avanzate**
 
-Nei livelli iniziali i comandi da usare erano comuni e documentati ovunque. Da questo livello in poi gli strumenti diventano più specializzati: `openssl` ha decine di sottocomandi e centinaia di flag, e nessuno li conosce tutti a memoria. Il percorso seguito in questo livello — `openssl` senza argomenti per vedere la lista dei sottocomandi, `man openssl` per leggere le descrizioni, `openssl s_client -help` per i flag specifici — è un metodo sistematico applicabile a qualsiasi strumento nuovo. Il manuale è scritto dagli sviluppatori dello strumento, è sempre aggiornato alla versione installata ed è disponibile offline sul server: in un contesto CTF o di penetration testing, dove l'accesso a internet può essere assente o inaffidabile, è spesso l'unica fonte utilizzabile.
+Nei livelli iniziali i comandi da usare erano comuni e documentati ovunque. Da questo livello in poi gli strumenti diventano più specializzati: `openssl` ha decine di sottocomandi e centinaia di flag, e nessuno li conosce tutti a memoria. Il percorso seguito in questo livello (`openssl` senza argomenti per vedere la lista dei sottocomandi, `man openssl` per leggere le descrizioni, `openssl s_client -help` per i flag specifici) è un metodo sistematico applicabile a qualsiasi strumento nuovo. Il manuale è scritto dagli sviluppatori dello strumento, è sempre aggiornato alla versione installata ed è disponibile offline sul server: in un contesto CTF o di penetration testing, dove l'accesso a internet può essere assente o inaffidabile, è spesso l'unica fonte utilizzabile.
 
 **`openssl s_client` e il `Verify return code: 18`**
 
-L'output dell'handshake include la riga `Verify return code: 18 (self-signed certificate)`. Significa che il certificato del server è autofirmato — non è rilasciato da una Certificate Authority (CA) riconosciuta — e quindi la catena di fiducia non può essere verificata. Per default `s_client` si connette comunque senza bloccarsi: segnala il problema ma non interrompe la sessione. Questo comportamento è intenzionale per uno strumento di test diagnostico. In un browser o in un client di produzione, un certificato self-signed causerebbe un errore bloccante o un avviso di sicurezza.
+L'output dell'handshake include la riga `Verify return code: 18 (self-signed certificate)`: significa che il certificato del server è autofirmato, cioè non è rilasciato da una Certificate Authority (CA) riconosciuta, e quindi la catena di fiducia non può essere verificata. Per default `s_client` si connette comunque senza bloccarsi: segnala il problema ma non interrompe la sessione. Questo comportamento è intenzionale per uno strumento di test diagnostico: in un browser o in un client di produzione, un certificato self-signed causerebbe un errore bloccante o un avviso di sicurezza.
 
 **Metodo alternativo: `ncat --ssl`**
 
@@ -167,4 +167,4 @@ Correct!
 [password bandit16]
 ```
 
-Il vantaggio rispetto a `openssl s_client` è la sintassi più concisa e la possibilità di usare la pipe con `echo` per evitare la sessione interattiva. Lo svantaggio è che non mostra nessuna informazione sul certificato o sul protocollo negoziato — utile se si vuole solo inviare dati, inadeguato se si sta diagnosticando un problema SSL.
+Il vantaggio rispetto a `openssl s_client` è la sintassi più concisa e la possibilità di usare la pipe con `echo` per evitare la sessione interattiva. Lo svantaggio è che non mostra nessuna informazione sul certificato o sul protocollo negoziato, utile se si vuole solo inviare dati, inadeguato se si sta diagnosticando un problema SSL.

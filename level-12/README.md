@@ -122,7 +122,7 @@ bandit12@bandit:/tmp/ubuntuware$ file data4
 data4: POSIX tar archive (GNU)
 ```
 
-Questa volta il risultato non è un archivio compresso ma un archivio tar — un formato che raggruppa più file insieme senza comprimerli. Si rinomina e si estrae:
+Questa volta il risultato non è un archivio compresso ma un archivio tar, un formato che raggruppa più file insieme senza comprimerli. Il processo non cambia: si rinomina e si estrae.
 
 ```bash
 bandit12@bandit:/tmp/ubuntuware$ mv data4 data4.tar
@@ -133,7 +133,7 @@ bandit12@bandit:/tmp/ubuntuware$ tar -xf data4.tar
 
 ### Step 6 – Livelli successivi: tar → tar → bzip2 → tar → gzip → ASCII
 
-Da questo punto la sequenza di decompressione continua meccanicamente, seguendo sempre lo stesso schema: `file` per identificare il tipo, `mv` per assegnare l'estensione corretta, comando appropriato per decomprimere o estrarre:
+Da questo punto la sequenza di decompressione continua meccanicamente, seguendo sempre lo stesso schema: `file` per identificare il tipo, `mv` per assegnare l'estensione corretta, comando appropriato per decomprimere o estrarre.
 
 ```bash
 bandit12@bandit:/tmp/ubuntuware$ ls
@@ -180,8 +180,8 @@ The password is FO5...
 
 **Il formato tar e la sua relazione con la compressione**
 
-tar (*tape archive*) è un formato di archiviazione che aggrega più file in uno singolo senza comprimerli. La compressione è un passo separato, storicamente eseguito in pipeline: `tar cf - . | gzip > archivio.tar.gz`. I file `.tar.gz` (o `.tgz`) sono quindi archivi tar compressi con gzip. In questo livello i due strati — archiviazione e compressione — sono applicati e annidati in modo indipendente, il che rende necessario gestirli separatamente.
+tar (*tape archive*) è un formato di archiviazione che aggrega più file in uno singolo senza comprimerli. La compressione è un passo separato, storicamente eseguito in pipeline: `tar cf - . | gzip > archivio.tar.gz`. I file `.tar.gz` (o `.tgz`) sono quindi archivi tar compressi con gzip. In questo livello i due strati, archiviazione e compressione, sono applicati e annidati in modo indipendente, il che rende necessario gestirli separatamente.
 
 **Automatizzare con uno script**
 
-La sequenza di decompressioni è ripetitiva e segue sempre lo stesso schema: `file` → `mv` → decomprimi/estrai → ricomincia. Sarebbe tecnicamente possibile scrivere uno script bash che automatizzi l'intero processo, riconoscendo il tipo del file a ogni iterazione e applicando il comando corretto fino a raggiungere un file ASCII. Tuttavia, il focus di questo livello non è l'automazione: l'obiettivo è comprendere i diversi formati di compressione e come identificarli manualmente. Inoltre, per eseguire uno script bash nel contesto di questo wargame occorrerebbe assegnargli i permessi di esecuzione con `chmod +x`, operazione che richiede di essere proprietari del file — condizione soddisfatta creando lo script in `/tmp` — ma che in ogni caso presuppone di avere il file nella directory corrente e i permessi necessari per modificarlo. Non vi sono invece privilegi amministrativi che manchino per questa operazione specifica: `chmod` su file propri funziona senza `sudo`.
+La sequenza di decompressioni è ripetitiva e segue sempre lo stesso schema: `file` → `mv` → decomprimi/estrai → ricomincia. Sarebbe tecnicamente possibile scrivere uno script bash che automatizzi l'intero processo, riconoscendo il tipo del file a ogni iterazione e applicando il comando corretto fino a raggiungere un file ASCII. Tuttavia, il focus di questo livello non è l'automazione: l'obiettivo è comprendere i diversi formati di compressione e come identificarli manualmente. Inoltre, per eseguire uno script bash nel contesto di questo wargame occorrerebbe assegnargli i permessi di esecuzione con `chmod +x`, operazione che richiede di essere proprietari del file (condizione che sarebbe soddisfatta creando lo script in `/tmp`) ma che in ogni caso presuppone di avere il file nella directory corrente e i permessi necessari per modificarlo. Non vi sono invece privilegi amministrativi che manchino per questa operazione specifica: `chmod` su file propri funziona senza `sudo`.

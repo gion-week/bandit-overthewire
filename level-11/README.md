@@ -40,7 +40,7 @@ bandit11@bandit:~$ cat data.txt
 Gur cnffjbeq vf [stringa ROT13]
 ```
 
-Il contenuto è testo leggibile ma privo di significato: le parole hanno lunghezze plausibili e i caratteri sono tutti ASCII, ma non formano frasi in inglese. È il segnale caratteristico del ROT13 — un cifrario di sostituzione che ruota ogni lettera di 13 posizioni nell'alfabeto. Il numero 13 non è casuale: è esattamente metà dei 26 caratteri dell'alfabeto, il che rende ROT13 la propria operazione inversa (applicarlo due volte restituisce il testo originale).
+Il contenuto è testo leggibile ma privo di significato: le parole hanno lunghezze plausibili e i caratteri sono tutti ASCII, ma non formano frasi in inglese. È il segnale caratteristico del ROT13, un cifrario di sostituzione che ruota ogni lettera di 13 posizioni nell'alfabeto. Il numero 13 non è casuale: è esattamente metà dei 26 caratteri dell'alfabeto, il che rende ROT13 la propria operazione inversa (applicarlo due volte restituisce il testo originale).
 
 ![Terminale: cat data.txt con output cifrato in ROT13](./screenshots/11-cat-before.png)
 
