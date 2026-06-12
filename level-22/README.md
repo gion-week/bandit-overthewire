@@ -53,7 +53,7 @@ bandit22@bandit:~$ cat /etc/cron.d/cronjob_bandit23
 * * * * * bandit23 /usr/bin/cronjob_bandit23.sh &> /dev/null
 ```
 
-Lo script viene eseguito come `bandit23` ogni minuto. Si legge lo script per capire cosa fa:
+Lo script viene eseguito come `bandit23` ogni minuto. Nuovamente, si legge lo script per capire cosa fa:
 
 ```bash
 bandit22@bandit:~$ cat /usr/bin/cronjob_bandit23.sh

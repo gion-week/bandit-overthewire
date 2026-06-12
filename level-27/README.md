@@ -58,7 +58,7 @@ gion-week@UbuntuWare:~/bandit27_repo$ cat README
 The password to the next level is: Yz9[...]
 ```
 
-Il repository contiene un solo file visibile, `README`, che riporta direttamente la password per `bandit28`. La cartella nascosta `.git` è la struttura interna del repository — non un file da leggere, ma l'intera storia e configurazione del progetto gestita da git.
+Il repository contiene un solo file visibile, `README`, che riporta direttamente la password per `bandit28`. La cartella nascosta `.git` è la struttura interna del repository, non un file da leggere ma l'intera storia e configurazione del progetto gestita da git.
 
 ![Terminale: cd, ls -a con .git e README, cat README con password](./screenshots/27-readme.png)
 
@@ -72,11 +72,11 @@ Il repository contiene un solo file visibile, `README`, che riporta direttamente
 
 **GitHub** (e analogamente GitLab, Bitbucket) è una piattaforma web che ospita repository git remoti aggiungendo funzionalità collaborative: pull request, issue tracker, CI/CD, controllo degli accessi. GitHub non è git: è un servizio costruito sopra git che ne usa il protocollo per il trasferimento dei dati.
 
-In questo livello il server remoto non è GitHub ma il server di OverTheWire, che espone un repository git accessibile via SSH — lo stesso protocollo che GitHub usa per l'autenticazione con chiave. La URL `ssh://bandit27-git@bandit.labs.overthewire.org:2220/home/bandit27-git/repo` è strutturata esattamente come un remote SSH di GitHub (`git@github.com:utente/repo.git`), con la differenza che la porta è esplicita perché non è la 22 standard.
+In questo livello il server remoto non è GitHub ma il server di OverTheWire, che espone un repository git accessibile via SSH, lo stesso protocollo che GitHub usa per l'autenticazione con chiave. La URL `ssh://bandit27-git@bandit.labs.overthewire.org:2220/home/bandit27-git/repo` è strutturata esattamente come un remote SSH di GitHub (`git@github.com:utente/repo.git`), con la differenza che la porta è esplicita perché non è la 22 standard.
 
 **I comandi git usati anche in questo progetto**
 
-Il repository `gion-week/bandit-overthewire` — quello che stai leggendo — usa git e GitHub con gli stessi comandi base di questo livello:
+Il repository che stai leggendo usa git e GitHub con gli stessi comandi base di questo livello:
 
 - `git clone` — usato per ottenere una copia locale del repository su una nuova macchina
 - `git add` — aggiunge file modificati all'area di staging

@@ -2,7 +2,7 @@
 
 ## Obiettivo
 
-La password per il livello successivo si ottiene sfruttando un cronjob che esegue, come `bandit24`, qualsiasi script trovato in una directory specifica — a condizione che lo script sia di proprietà di `bandit23`. L'obiettivo è scrivere uno script che verrà eseguito con i privilegi di `bandit24` e che scriva la password del livello successivo in un file accessibile.
+La password per il livello successivo si ottiene sfruttando un cronjob che esegue, come `bandit24`, qualsiasi script trovato in una directory specifica e a condizione che lo script sia di proprietà di `bandit23`. L'obiettivo è scrivere uno script che verrà eseguito con i privilegi di `bandit24` e che scriva la password del livello successivo in un file accessibile.
 
 ---
 
@@ -85,7 +85,7 @@ total 4
 drwxrwx-wx 10 root bandit24 4096 Jun  8 13:34 foo
 ```
 
-I permessi `drwxrwx-wx` significano: root e il gruppo `bandit24` hanno accesso completo; gli altri (`bandit23`) hanno solo scrittura ed esecuzione, ma **non lettura**. Non possiamo listare il contenuto della directory, ma possiamo copiare file al suo interno — che è tutto ciò che serve.
+I permessi `drwxrwx-wx` significano: root e il gruppo `bandit24` hanno accesso completo; gli altri (`bandit23`) hanno solo scrittura ed esecuzione, ma **non lettura**. Non possiamo listare il contenuto della directory, ma possiamo copiare file al suo interno, esattamente quello che ci serve.
 
 ![Terminale: ls cron.d, cat cronjob_bandit24 e cat dello script con ls -l /var/spool/bandit24/](./screenshots/23-cronjob_bandit24.png)
 
@@ -139,7 +139,9 @@ Creare `pass.txt` vuoto in anticipo con i permessi corretti è essenziale: se il
 
 ### Step 5 – Depositare lo script e recuperare la password
 
-Si copia lo script nella directory sorvegliata dal cronjob e si attende al massimo un minuto:
+Si **copia** lo script nella directory sorvegliata dal cronjob e si attende al massimo un minuto.
+
+Perchè copiarlo e non spostarlo? Occorre ricordare che lo script `cronjob_bandit24.sh` **elimina il file dopo l'esecuzione** indipendentemente dall'esito: se il proprio script non dovesse funzionare come previsto occorrerebbe riscriverlo da zero anzichè modificarlo!
 
 ```bash
 bandit23@bandit:/tmp/bandit_gionweek$ cp bandit23_script.sh /var/spool/bandit24/foo/
@@ -173,4 +175,4 @@ cat /etc/bandit_pass/bandit24 > /tmp/bandit_gionweek/pass.txt
 chmod 644 /tmp/bandit_gionweek/pass.txt
 ```
 
-In questo caso `pass.txt` non va creato in anticipo: `bandit24` lo crea (`644` = `rw-r--r--`) e lo rende leggibile a tutti. `bandit23` può leggerlo immediatamente dopo. Il vantaggio è che non serve il `chmod 666` preventivo; lo svantaggio teorico è che c'è un breve intervallo tra la scrittura e il `chmod` in cui il file esiste ma non è ancora leggibile — trascurabile in pratica ma rilevante in contesti di sicurezza più sensibili.
+In questo caso `pass.txt` non va creato in anticipo: `bandit24` lo crea (`644` = `rw-r--r--`) e lo rende leggibile a tutti. `bandit23` può leggerlo immediatamente dopo. Il vantaggio è che non serve il `chmod 666` preventivo; lo svantaggio teorico è che c'è un breve intervallo tra la scrittura e il `chmod` in cui il file esiste ma non è ancora leggibile, trascurabile in pratica ma rilevante in contesti di sicurezza più sensibili.

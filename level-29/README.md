@@ -98,7 +98,7 @@ Some notes for bandit30 of bandit.
 - password: <no passwords in production!>
 ```
 
-Anche il commit iniziale ha `<no passwords in production!>`. La password non è mai esistita nel branch `master`. Occorre cercare altrove in altri branch.
+Anche il commit iniziale ha `<no passwords in production!>`. La password non è mai esistita nel branch `master`: occorre cercare altrove in altri branch.
 
 ![Terminale: git checkout initial commit, detached HEAD, cat README con password assente](./screenshots/29-initial-commit.png)
 
@@ -116,7 +116,7 @@ ccda64bae05a06bd418b662bfe9b72ef3d839d78 refs/remotes/origin/master
 8335f3dd98c2493f54cb1bd82bd41c2c98c64ebc refs/remotes/origin/sploits-dev
 ```
 
-Esistono tre branch remoti: `master`, `dev` e `sploits-dev`. Il branch `master` è già stato esaminato. Il nome `dev` corrisponde all'indizio del README (`<no passwords in production!>`): i dati di sviluppo, password incluse, potrebbero stare lì. Si fa checkout sull'hash corrispondente e si ispeziona il commit:
+Esistono tre branch remoti: `master`, `dev` e `sploits-dev`. Il branch `master` è già stato esaminato. Il nome `dev` corrisponde all'indizio del README (`<no passwords in production!>`): i dati di sviluppo, password incluse, potrebbero essere lì. Si fa checkout sull'hash corrispondente e si ispeziona il commit:
 
 ```bash
 gion-week@UbuntuWare:~/bandit29_repo/.git$ cd .. && git checkout 4a8f414d4587ca65b6f9512bf690ca0d885e8933
@@ -169,4 +169,4 @@ La cartella `.git/` è l'intero repository: contiene tutta la storia, la configu
 
 git mantiene i riferimenti a branch e tag in due modi: come file individuali in `.git/refs/heads/` (branch locali), `.git/refs/remotes/` (branch remoti) e `.git/refs/tags/` (tag); oppure compressi nel file `packed-refs`. Quando si fa `git clone`, i branch remoti vengono spesso scritti direttamente in `packed-refs` invece che come file separati. Se `git branch -a` (che mostra tutti i branch inclusi i remoti) non rivelasse nulla di interessante o non fosse disponibile, leggere direttamente `packed-refs` è il modo più diretto per vedere tutti i riferimenti esistenti nel repository.
 
-In questo livello `packed-refs` ha rivelato tre branch (`master`, `dev`, `sploits-dev`): il fatto che `master` avesse sempre avuto `<no passwords in production!>` suggeriva che i dati sensibili si trovassero altrove — e `dev` era il candidato più naturale.
+In questo livello `packed-refs` ha rivelato tre branch (`master`, `dev`, `sploits-dev`): il fatto che `master` avesse sempre avuto `<no passwords in production!>` suggeriva che i dati sensibili si trovassero altrove e `dev` era il candidato più naturale.

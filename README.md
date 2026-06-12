@@ -90,8 +90,10 @@ Dove `<N>` è il numero del livello a cui si vuole accedere. La password di ogni
 
 ---
 
-## Note
+## Disclaimer
 
-- Le password trovate **non vengono pubblicate** nei writeup per rispetto delle linee guida di OverTheWire.
-- I writeup descrivono il ragionamento e i comandi usati, non la soluzione letterale.
-- Ogni livello include i comandi rilevanti e, dove utile, screenshot del terminale.
+- L'obiettivo di questa repository non è fornire un tutorial di come si risolvono i livelli, ma descrivere il percorso personale che mi ha portato alle soluzioni. Bandit è un progetto nato **per imparare le basi** e l'apprendimento è la vera essenza dell'esperienza, non dimenticarlo!
+- Le password trovate **non vengono pubblicate** e **non sono visibili** negli screenshots per rispetto delle linee guida di OverTheWire.
+- I writeup delle soluzioni descrivono il ragionamento seguito e i comandi usati durante i miei test.
+- Ogni livello include i comandi rilevanti e gli screenshots del terminale come supporto visivo alla lettura.
+- Nella sezione **"Note e osservazioni"** di ogni README si trovano ulteriori insight su comandi e concetti affrontati nel livello in questione.

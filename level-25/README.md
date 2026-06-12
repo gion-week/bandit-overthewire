@@ -61,7 +61,7 @@ Lo script fa tre cose:
 - `exec more ~/text.txt` — esegue `more` sul file `text.txt` **sostituendo il processo shell** (non avviandolo come sottoprocesso)
 - `exit 0` — questa riga è **irraggiungibile**: `exec` non ritorna mai, perché il processo corrente viene rimpiazzato da `more`
 
-Quando `more` finisce di mostrare il file ed esce, non c'è nessuna shell a cui tornare — la connessione SSH si chiude.
+Quando `more` finisce di mostrare il file ed esce, non c'è nessuna shell a cui tornare e la connessione SSH si chiude.
 
 ![Terminale: ls, tail chiave, grep /etc/passwd, cat /usr/bin/showtext](./screenshots/25-ssh-showtext.png)
 
@@ -73,15 +73,15 @@ Si copia la chiave in locale, si impostano i permessi e si testa la connessione:
 gion-week@UbuntuWare:~$ nano bandit26_ssh && chmod 600 bandit26_ssh && ssh bandit26@bandit.labs.overthewire.org -p 2220 -i bandit26_ssh
 ```
 
-La connessione si apre, mostra il banner di benvenuto di OverTheWire, e si chiude immediatamente con `Connection to bandit.labs.overthewire.org closed.` — esattamente come previsto: `more` mostra `text.txt`, non trova abbastanza testo da richiedere paginazione con un terminale di dimensione standard, ed esce.
+La connessione si apre, mostra il banner di benvenuto di OverTheWire, e si chiude immediatamente con `Connection to bandit.labs.overthewire.org closed.` esattamente come previsto: `more` mostra `text.txt`, non trova abbastanza testo da richiedere paginazione con un terminale di dimensione standard, ed esce.
 
 ![Terminale: ssh con chiave bandit26, connessione aperta e subito chiusa](./screenshots/25-exit0.png)
 
 ### Nota sulla dimensione del terminale: perché è necessario PuTTY
 
-La chiave per aggirare il meccanismo è la modalità interattiva di `more`: se il file `text.txt` non entra interamente nella finestra del terminale, `more` si ferma e attende input prima di procedere — è in questo stato sospeso che si può interagire con esso.
+La chiave per aggirare il meccanismo è la modalità interattiva di `more`: se il file `text.txt` non entra interamente nella finestra del terminale, `more` si ferma e attende input prima di procedere ed è in questo stato sospeso che si può interagire con esso.
 
-Il problema pratico è che la finestra del terminale deve avere un numero di righe sufficientemente **piccolo** da non contenere l'intero file. Sul terminale GNOME di Ubuntu e su Windows cmd, ridurre manualmente la finestra non era sufficiente: lo scrolldown automatico dell'output SSH faceva sì che `more` ricevesse dimensioni errate o uscisse prima che fosse possibile interagire. Anche tmux non risolveva il problema, poiché gestisce le dimensioni del terminale in modo indipendente dalla finestra fisica. PuTTY permette di impostare il numero di righe **in modo persistente nella configurazione della sessione**, garantendo che il terminale abbia esattamente le dimensioni scelte prima che la connessione venga stabilita.
+Il problema pratico è che la finestra del terminale deve avere un numero di righe sufficientemente **piccolo** da non contenere l'intero file. Sul terminale GNOME di Ubuntu e su Windows CMD, ridurre manualmente la finestra non era sufficiente: lo scrolldown automatico dell'output SSH faceva sì che `more` ricevesse dimensioni errate o uscisse prima che fosse possibile interagire. Anche tmux non risolveva il problema, poiché gestisce le dimensioni del terminale in modo indipendente dalla finestra fisica. PuTTY permette di impostare il numero di righe **in modo persistente nella configurazione della sessione**, garantendo che il terminale abbia esattamente le dimensioni scelte prima che la connessione venga stabilita.
 
 ### Step 3 – Configurare PuTTY con finestra piccola e chiave convertita
 
@@ -103,7 +103,7 @@ Nella configurazione di PuTTY si impostano tre cose:
 
 ### Step 4 – Connettersi, entrare in vim e aprire una shell
 
-Con la finestra PuTTY ridotta a 2 righe, la connessione si stabilisce e `more` si ferma in modalità interattiva — il file `text.txt` non entra nelle 2 righe disponibili. A questo punto si preme `v` per aprire il file in `vi`/`vim`:
+Con la finestra PuTTY ridotta a 2 righe, la connessione si stabilisce e `more` si ferma in modalità interattiva dato che il file `text.txt` non entra nelle 2 righe disponibili. A questo punto si preme `v` per aprire il file in `vi`/`vim`:
 
 In vim si impostano prima la shell desiderata e poi si richiama:
 
@@ -132,12 +132,12 @@ bandit26@bandit:~$ cat /etc/bandit_pass/bandit26
 - `Spazio` — avanza di una schermata
 - `Invio` — avanza di una riga
 - `q` — esce
-- `v` — apre `vi` sul file corrente — questo è il vettore sfruttato in questo livello
+- `v` — apre `vi` sul file corrente; questo è il vettore sfruttato in questo livello
 - `/pattern` — cerca un pattern nel testo
 
 **`exec` e il processo di sostituzione**
 
-`exec comando` in bash/sh non avvia un processo figlio: **sostituisce** il processo shell corrente con il comando specificato. Il PID rimane lo stesso, ma il programma in esecuzione cambia. Questo ha due implicazioni rilevanti qui: primo, quando `more` termina non c'è una shell padre a cui tornare, quindi la connessione SSH si chiude; secondo, la riga `exit 0` dopo `exec more ~/text.txt` non viene mai eseguita — è codice irraggiungibile, probabilmente inserita per chiarezza o come residuo.
+`exec comando` in bash/sh non avvia un processo figlio: **sostituisce** il processo shell corrente con il comando specificato. Il PID rimane lo stesso, ma il programma in esecuzione cambia. Questo ha due implicazioni rilevanti qui: primo, quando `more` termina non c'è una shell padre a cui tornare, quindi la connessione SSH si chiude; secondo, la riga `exit 0` dopo `exec more ~/text.txt` non viene mai eseguita (è codice irraggiungibile, probabilmente inserito per chiarezza o come residuo).
 
 **Fuga da vim con `:shell` e `:!comando`**
 

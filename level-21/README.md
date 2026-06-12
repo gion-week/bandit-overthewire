@@ -60,7 +60,7 @@ chmod 644 /tmp/t7O6lds9S0RqQh9aMcz6ShpAoZKF7fgv
 cat /etc/bandit_pass/bandit22 > /tmp/t7O6lds9S0RqQh9aMcz6ShpAoZKF7fgv
 ```
 
-Lo script fa due cose: imposta i permessi `644` su un file in `/tmp` (rendendolo leggibile da tutti gli utenti), poi ci scrive dentro la password di `bandit22`. Dato che lo script gira ogni minuto come `bandit22` — l'unico utente che può leggere `/etc/bandit_pass/bandit22` — il file in `/tmp` viene aggiornato continuamente ed è accessibile a chiunque sul server, incluso `bandit21`.
+Lo script fa due cose: imposta i permessi `644` su un file in `/tmp` (rendendolo leggibile da tutti gli utenti), poi ci scrive dentro la password di `bandit22`. Dato che lo script gira ogni minuto come `bandit22` il file in `/tmp` viene aggiornato continuamente ed è accessibile a chiunque sul server, incluso `bandit21`.
 
 Il nome del file (`t7O6lds9S0RqQh9aMcz6ShpAoZKF7fgv`) non deve essere indovinato, è scritto esplicitamente nello script.
 

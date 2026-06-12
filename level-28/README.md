@@ -117,7 +117,7 @@ Il diff mostra la riga rimossa (preceduta da `--`) e quella aggiunta (`+`): la p
 
 `git log` è il punto di partenza per capire cosa è successo in un repository: elenca tutti i commit in ordine cronologico inverso (il più recente in cima), con hash, autore, data e messaggio. I messaggi di commit sono particolarmente rilevanti in un contesto investigativo: in questo livello "fix info leak" indicava esplicitamente che qualcosa era stato rimosso per nasconderlo.
 
-`git show` senza argomenti mostra il diff del commit puntato da `HEAD` (il più recente). Per ispezionare un commit specifico si usa l'hash: `git show a1487fd`. Il diff usa la sintassi unificata già vista con il comando `diff` del livello 17: `--` per le righe rimosse, `++` per quelle aggiunte.
+`git show` senza argomenti mostra il diff del commit puntato da `HEAD` (il più recente). Per ispezionare un commit specifico si usa l'hash: `git show [hash]`. Il diff usa la sintassi unificata già vista con il comando `diff` del livello 17: `--` per le righe rimosse, `++` per quelle aggiunte.
 
 **Git non dimentica: le implicazioni per la sicurezza**
 
