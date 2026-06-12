@@ -57,10 +57,10 @@ Ogni cartella `level-XX` rappresenta la risoluzione del livello XX, ovvero i pas
 | [Level 27](./level-27/README.md) | `git`, `git clone` via SSH, struttura di un repository | ✅ |
 | [Level 28](./level-28/README.md) | `git log` e `git show`, recupero di dati rimossi dalla storia dei commit | ✅ |
 | [Level 29](./level-29/README.md) | Branch remoti git, `packed-refs`, `git checkout` e struttura di `.git/` | ✅ |
-| [Level 30](./level-30/README.md) | — | ✅ |
-| [Level 31](./level-31/README.md) | — | ✅ |
-| [Level 32](./level-32/README.md) | — | ✅ |
-| [Level 33](./level-33/README.md) | — | ✅ |
+| [Level 30](./level-30/README.md) | `git tag`, oggetti git (blob/commit/tree), recupero contenuto da `tag` | ✅ |
+| [Level 31](./level-31/README.md) | `git push`, `.gitignore`, ciclo completo add/commit/push | ✅ |
+| [Level 32](./level-32/README.md) | Variabili speciali di shell (`$0`), escape da shell ristretta | ✅ |
+| [Level 33](./level-33/README.md) | Ad oggi (12/06/2026) non esiste ancora un livello 33 | ✅ |
 
 ---
 
