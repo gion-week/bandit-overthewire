@@ -52,7 +52,7 @@ Details:
 
 Le istruzioni sono chiare: creare `key.txt` con il contenuto specificato e pubblicarlo su `master`. Oltre a `README.md` è presente anche un `.gitignore`, un file mai visto nei repository dei livelli precedenti e la cui presenza è già un indizio.
 
-![Terminale: git clone, cd, ls -a con .gitignore, cat README.md](./screenshots/31-repo.png)
+![Terminale: git clone, cd, ls -a con .gitignore, cat README.md](./screenshots/31-bandit31-repo.png)
 
 ### Step 2 – Creare il file e scoprire che viene ignorato
 
@@ -128,7 +128,7 @@ remote: To ssh://bandit.labs.overthewire.org:2220/home/bandit31-git/repo
 
 Il server riceve il push, valida il contenuto di `key.txt` e restituisce la password per `bandit32` direttamente nell'output del comando.
 
-![Terminale: cat .gitconfig su server, exit, git config, add, commit, push con password](./screenshots/31-push.png)
+![Terminale: cat .gitconfig su server, exit, git config, add, commit, push con password](./screenshots/31-config-push.png)
 
 ---
 
