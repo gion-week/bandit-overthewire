@@ -141,7 +141,7 @@ Creare `pass.txt` vuoto in anticipo con i permessi corretti è essenziale: se il
 
 Si **copia** lo script nella directory sorvegliata dal cronjob e si attende al massimo un minuto.
 
-Perchè copiarlo e non spostarlo? Occorre ricordare che lo script `cronjob_bandit24.sh` **elimina il file dopo l'esecuzione** indipendentemente dall'esito: se il proprio script non dovesse funzionare come previsto occorrerebbe riscriverlo da zero anzichè modificarlo!
+Perché copiarlo e non spostarlo? Occorre ricordare che lo script `cronjob_bandit24.sh` **elimina il file dopo l'esecuzione** indipendentemente dall'esito: se il proprio script non dovesse funzionare come previsto occorrerebbe riscriverlo da zero anziché modificarlo.
 
 ```bash
 bandit23@bandit:/tmp/bandit_gionweek$ cp bandit23_script.sh /var/spool/bandit24/foo/

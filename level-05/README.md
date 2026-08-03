@@ -60,7 +60,7 @@ Ogni sottocartella contiene più file di vario tipo. Cercare manualmente tra 20 
 
 ### Step 2 – Cercare il file con `find` per dimensione
 
-Tornando in `inhere`, si usa `find` per filtrare i file con dimensione esatta di 1033 byte. Scegliamo la dimensione esatta come criterio perchè è quello che ha maggiori probabilità di restringere notevolmente il campo di ricerca in questo caso. Se ad esempio si fosse scelto uno degli altri due criteri, le probabilità di trovare file "human-readable" e/o "non eseguibili" sarebbero state molto alte e si sarebbe dovuto filtrare ulteriormente l'output:
+Tornando in `inhere`, si usa `find` per filtrare i file con dimensione esatta di 1033 byte. Scegliamo la dimensione esatta come criterio perché è quello che ha maggiori probabilità di restringere notevolmente il campo di ricerca in questo caso. Se ad esempio si fosse scelto uno degli altri due criteri, le probabilità di trovare file "human-readable" e/o "non eseguibili" sarebbero state molto alte e si sarebbe dovuto filtrare ulteriormente l'output:
 
 ```bash
 bandit5@bandit:~/inhere/maybehere01$ cd ..
